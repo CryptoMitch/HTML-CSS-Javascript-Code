@@ -1,3 +1,5 @@
+// This is some code I used in my CryptoCompanion.app web application.
+
 import React from 'react';
 
 const Coin360Widget = () => (
