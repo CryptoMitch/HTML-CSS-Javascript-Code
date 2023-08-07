@@ -1,0 +1,76 @@
+
+<!-- I put this module in CryptoCompanion.app -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-size: calc(10px + 2vmin);
+      color: #16C79A;
+      background-color: #19456B;
+    }
+    h2 {
+      color: #16C79A;
+    }
+    label {
+      color: #16C79A;
+      margin-right: 10px;
+    }
+    input {
+      background: white;
+      border: 4px solid #16C79A;
+      border-radius: 25px;
+      padding: 5px;
+      margin-bottom: 20px;
+      width: 300px;
+      max-width: 80vw;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      background-color: #16C79A;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <label>Initial Investment: </label><input id="investment" type="number">
+  <br>
+  <label>Initial Coin Price: </label><input id="initialPrice" type="number">
+  <br>
+  <label>Projected Coin Price: </label><input id="projectedPrice" type="number">
+  <br>
+  <button id="calculateButton">Calculate</button>
+  <div id="forecast"></div>
+
+  <script>
+    document.getElementById('calculateButton').addEventListener('click', function() {
+      var investment = parseFloat(document.getElementById('investment').value);
+      var initialPrice = parseFloat(document.getElementById('initialPrice').value);
+      var projectedPrice = parseFloat(document.getElementById('projectedPrice').value);
+
+      if (isNaN(investment) || isNaN(initialPrice) || isNaN(projectedPrice)) {
+        alert('Please enter valid numbers in all fields.');
+        return;
+      }
+
+      var coinsBought = investment / initialPrice;
+      var futureValue = coinsBought * projectedPrice;
+
+      document.getElementById('forecast').innerText = 'With your initial investment, your crypto would be worth ' + futureValue.toFixed(2) + ' at the projected price.';
+    });
+  </script>
+</body>
+</html>
